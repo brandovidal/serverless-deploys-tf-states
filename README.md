@@ -10,22 +10,25 @@
 
 ## Steps
 
-- Init project
-  Locate in `cloud/` folder
+- Configure you aws profile with your credentials
+
+```bash
+aws configure terraform-user
+```
+
+- Init project, ubicate in `cloud/` folder
 
 ```bash
 terragrunt init
 ```
 
-- Run plan
-  Locate in some service, for exmaple: `services/backoffice/` folder
+- Run plan, ubicate in some service, for exmaple: `services/backoffice/` folder
 
 ```bash
 terragrunt plan
 ```
 
-- Apply
-  Locate in some service, for exmaple: `services/backoffice/` folder
+- Apply project, ubicate in some service, for exmaple: `services/backoffice/` folder
 
 ```bash
 terragrunt apply
