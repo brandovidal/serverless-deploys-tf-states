@@ -2,8 +2,7 @@ resource "aws_s3_bucket" "tf_states_bucket" {
   bucket = var.bucket_name
 
   tags = {
-    Environment = var.env
-    Project     = var.project_name
+    Project = var.project_name
   }
 }
 
@@ -27,7 +26,7 @@ data "aws_iam_policy_document" "main" {
   version = "2012-10-17"
 
   statement {
-    sid = "AllowBucketAccess"
+    sid    = "AllowBucketAccess"
     effect = "Allow"
     actions = [
       "s3:ListBucket",
