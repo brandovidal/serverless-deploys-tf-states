@@ -35,6 +35,7 @@ data "aws_iam_policy_document" "main" {
       "s3:DeleteObject"
     ]
     resources = [
+      aws_s3_bucket.tf_states_bucket.arn,
       "${aws_s3_bucket.tf_states_bucket.arn}/*"
     ]
     principals {
