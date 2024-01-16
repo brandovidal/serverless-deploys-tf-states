@@ -9,20 +9,20 @@ resource "aws_s3_bucket" "tf_states_bucket" {
 resource "aws_s3_bucket_public_access_block" "default" {
   bucket = aws_s3_bucket.tf_states_bucket.id
 
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
 }
 
-resource "aws_s3_bucket_policy" "main" {
+resource "aws_s3_bucket_policy" "policy_allow_s3" {
   bucket = aws_s3_bucket.tf_states_bucket.id
-  policy = data.aws_iam_policy_document.main.json
+  policy = data.aws_iam_policy_document.allow_s3.json
 
   depends_on = [aws_s3_bucket_public_access_block.default]
 }
 
-data "aws_iam_policy_document" "main" {
+data "aws_iam_policy_document" "allow_s3" {
   version = "2012-10-17"
 
   statement {
