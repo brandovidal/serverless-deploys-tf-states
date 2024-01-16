@@ -44,3 +44,10 @@ data "aws_iam_policy_document" "main" {
     }
   }
 }
+
+resource "aws_s3_bucket_versioning" "versioning_enabled" {
+  bucket = aws_s3_bucket.tf_states_bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
