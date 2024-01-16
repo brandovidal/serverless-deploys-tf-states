@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "tf_states_bucket" {
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "example" {
+resource "aws_s3_bucket_public_access_block" "default" {
   bucket = aws_s3_bucket.tf_states_bucket.id
 
   block_public_acls       = false
@@ -19,7 +19,7 @@ resource "aws_s3_bucket_policy" "main" {
   bucket = aws_s3_bucket.tf_states_bucket.id
   policy = data.aws_iam_policy_document.main.json
 
-  depends_on = [aws_s3_bucket_public_access_block.example]
+  depends_on = [aws_s3_bucket_public_access_block.default]
 }
 
 data "aws_iam_policy_document" "main" {
